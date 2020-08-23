@@ -1,0 +1,22 @@
+.introduction {
+  background-image: url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  min-height: 100vh;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+.introduction__name {
+  font-size: 3.8rem;
+  padding-bottom: 1em;
+  letter-spacing: 1.6px;
+}
+.introduction__job {
+  font-size: 1.8rem;
+  letter-spacing: 1.2px;
+}
