@@ -1,7 +1,8 @@
 import React from 'react';
 import Project from '../../project';
+import './style.css';
 
-const Projects = () => {
+const Projects = React.forwardRef((props, ref) => {
   const projects = [
     {
       title: 'journey',
@@ -17,18 +18,19 @@ const Projects = () => {
       description:
         'Website for patients to make an appointment, check or cancel visit and fill survey. Data are stored using MongoDB Atlas. Deploy using Heroku.',
       image: '/images/clinic.jpg',
-      technologies: ['React', 'Node', 'Express', 'MongoDB', 'Material UI'],
+      technologies: ['React', 'Node', 'Express', 'MongoDB', 'Material-UI'],
       live: 'https://framista-clinic.herokuapp.com/',
       github: 'https://github.com/framista/clinic',
     },
   ];
   return (
-    <div>
-      {projects.map((project) => (
-        <Project project={project} />
+    <div ref={ref} className="projects">
+      {projects.map((project, index) => (
+        <Project key={index} project={project} />
       ))}
+      <div className="triangle projects__triangle"></div>
     </div>
   );
-};
+});
 
 export default Projects;

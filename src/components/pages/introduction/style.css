@@ -1,5 +1,5 @@
 .introduction {
-  background-image: url("https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80");
+  background-image: url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -25,5 +25,11 @@
   letter-spacing: 1.2px;
 }
 .introduction__triangle {
-  border-bottom: 15vh solid #15191e;
+  border-bottom: 5vh solid #15191e;
+}
+
+@media (min-width: 900px) {
+  .introduction__triangle {
+    border-bottom: 15vh solid #15191e;
+  }
 }

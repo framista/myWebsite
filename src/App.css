@@ -1,6 +1,6 @@
 :root {
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 *,
@@ -17,5 +17,5 @@
   left: 0px;
   width: 0px;
   height: 0px;
-  border-left: 99vw solid transparent;
+  border-left: 100vw solid transparent;
 }

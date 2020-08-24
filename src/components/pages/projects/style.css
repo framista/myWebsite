@@ -1,0 +1,16 @@
+.projects {
+  position: relative;
+  overflow: hidden;
+}
+.projects .project:nth-last-child(2) {
+  border-bottom: none;
+  min-height: calc(100vh + 15vh);
+}
+.projects__triangle {
+  border-bottom: 5vh solid #15191e;
+}
+@media (min-width: 900px) {
+  .projects__triangle {
+    border-bottom: 15vh solid #15191e;
+  }
+}

@@ -6,9 +6,6 @@
   padding: 2rem;
   border-bottom: 2px solid #e9aa35;
 }
-.project:last-child {
-  border-bottom: none;
-}
 .project__info {
   display: flex;
   flex-direction: column;

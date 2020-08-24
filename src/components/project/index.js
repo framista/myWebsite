@@ -10,8 +10,10 @@ const Project = ({ project }) => {
         <h3 className="project__title">{title}</h3>
         <p className="project__description">{description}</p>
         <div className="project__technologies">
-          {technologies.map((technology) => (
-            <p className="project__technologies--item">{technology}</p>
+          {technologies.map((technology, index) => (
+            <p key={index} className="project__technologies--item">
+              {technology}
+            </p>
           ))}
         </div>
         <div className="project__links">
@@ -20,6 +22,7 @@ const Project = ({ project }) => {
             target="_blank"
             href={live}
             title={`live ${title}`}
+            rel="noopener noreferrer"
           >
             live
           </a>
@@ -28,6 +31,7 @@ const Project = ({ project }) => {
             target="_blank"
             href={github}
             title={`github ${title}`}
+            rel="noopener noreferrer"
           >
             github
           </a>
