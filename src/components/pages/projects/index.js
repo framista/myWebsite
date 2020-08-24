@@ -12,6 +12,15 @@ const Projects = () => {
       live: 'https://framista.github.io/journey/#/',
       github: 'https://github.com/framista/journey',
     },
+    {
+      title: 'virtual clinic',
+      description:
+        'Website for patients to make an appointment, check or cancel visit and fill survey. Data are stored using MongoDB Atlas. Deploy using Heroku.',
+      image: '/images/clinic.jpg',
+      technologies: ['React', 'Node', 'Express', 'MongoDB', 'Material UI'],
+      live: 'https://framista-clinic.herokuapp.com/',
+      github: 'https://github.com/framista/clinic',
+    },
   ];
   return (
     <div>
