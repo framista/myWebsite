@@ -32,7 +32,12 @@ const Navbar = ({ refs }) => {
           >
             education
           </li>
-          <li className="nav__list--item">contact</li>
+          <li
+            onClick={() => goToSection('contactSection')}
+            className="nav__list--item"
+          >
+            contact
+          </li>
         </ul>
       </nav>
     </div>
