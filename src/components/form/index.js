@@ -1,15 +1,32 @@
 import React, { useState } from 'react';
 import './style.css';
-import { validateName } from '../../utils/validate';
+import {
+  validateName,
+  validateEmail,
+  validateSubject,
+  validateMessage,
+  isError,
+} from '../../utils/validate';
 
 const Form = () => {
-  const [name, setName] = useState('');
-  const [errorName, setErrorName] = useState('');
-  const changeName = (e) => {
-    const name = e.target.value;
-    console.log(validateName(name));
-    setErrorName(validateName(name));
-    setName(name);
+  const [data, setData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  });
+  const [errorData, setErrorData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  });
+
+  const changeField = (e, validate) => {
+    const value = e.target.value;
+    const name = e.target.name;
+    setErrorData({ ...errorData, [name]: validate(value) });
+    setData({ ...data, [name]: value });
   };
 
   const encode = (data) => {
@@ -20,10 +37,24 @@ const Form = () => {
       .join('&');
   };
 
+  const validateAll = () => {
+    const nameError = validateName(data.name);
+    const emailError = validateEmail(data.email);
+    const subjectError = validateSubject(data.subject);
+    const messageError = validateMessage(data.message);
+    return {
+      name: nameError,
+      email: emailError,
+      subject: subjectError,
+      message: messageError,
+    };
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const data = { name };
-    if (!errorName) {
+    const errors = validateAll();
+    setErrorData(errors);
+    if (!isError(errors)) {
       fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -40,7 +71,7 @@ const Form = () => {
 
   return (
     <div className="form">
-      <form onSubmit={handleSubmit} method="post">
+      <form onSubmit={handleSubmit} method="post" noValidate>
         <h3 className="form__title">Let's stay in touch</h3>
         <div className="form__group">
           <label className="form__label">Your name</label>
@@ -48,17 +79,34 @@ const Form = () => {
             className="form__input"
             type="text"
             name="name"
-            value={name}
-            onChange={changeName}
+            value={data.name}
+            onChange={(e) => changeField(e, validateName)}
           />
+          {errorData.name && <p className="form__error">{errorData.name}</p>}
         </div>
         <div className="form__group">
           <label className="form__label">Your email</label>
-          <input className="form__input" type="email" name="email" />
+          <input
+            className="form__input"
+            type="email"
+            name="email"
+            value={data.email}
+            onChange={(e) => changeField(e, validateEmail)}
+          />
+          {errorData.email && <p className="form__error">{errorData.email}</p>}
         </div>
         <div className="form__group">
           <label className="form__label">Subject</label>
-          <input className="form__input" type="text" name="subject" />
+          <input
+            className="form__input"
+            type="text"
+            name="subject"
+            value={data.subject}
+            onChange={(e) => changeField(e, validateSubject)}
+          />
+          {errorData.subject && (
+            <p className="form__error">{errorData.subject}</p>
+          )}
         </div>
         <div className="form__group">
           <label className="form__label">Message</label>
@@ -66,7 +114,12 @@ const Form = () => {
             className="form__textarea"
             rows="3"
             name="message"
-          ></textarea>
+            value={data.message}
+            onChange={(e) => changeField(e, validateMessage)}
+          />
+          {errorData.message && (
+            <p className="form__error">{errorData.message}</p>
+          )}
         </div>
         <button className="form__button" type="submit">
           Send
