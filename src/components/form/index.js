@@ -7,6 +7,7 @@ import {
   validateMessage,
   isError,
 } from '../../utils/validate';
+import Modal from '../modal';
 
 const Form = () => {
   const [data, setData] = useState({
@@ -21,6 +22,25 @@ const Form = () => {
     subject: '',
     message: '',
   });
+  const [modalContent, setModalContent] = useState({
+    title: 'The message was sent successfully',
+    body:
+      'Thanks for your message! I promise to answer you as soon as possible 😀',
+    isSucceeded: true,
+  });
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const successfullySend = {
+    title: 'The message has been sent successfully',
+    body: `Hi ${data.name}! Thanks for your message! I promise to answer you as soon as possible 😀`,
+    isSucceeded: true,
+  };
+
+  const unsuccessfullySend = {
+    title: 'Failed to send message',
+    body: `Hi ${data.name}! There is problem with sending the message. You can try again later or contact me by email`,
+    isSucceeded: false,
+  };
 
   const changeField = (e, validate) => {
     const value = e.target.value;
@@ -61,11 +81,23 @@ const Form = () => {
         body: encode({ 'form-name': 'contact', ...data }),
       })
         .then((response) => {
-          console.log(response);
+          if (response.status === 200) {
+            setData({
+              name: '',
+              email: '',
+              subject: '',
+              message: '',
+            });
+            setModalContent({ ...successfullySend });
+            setModalOpen(true);
+          } else {
+            setModalContent({ ...unsuccessfullySend });
+          }
         })
         .catch((error) => {
-          console.log(error);
-        });
+          setModalContent({ ...unsuccessfullySend });
+        })
+        .finally(() => setModalOpen(true));
     }
   };
 
@@ -125,6 +157,11 @@ const Form = () => {
           Send
         </button>
       </form>
+      <Modal
+        isModalOpen={isModalOpen}
+        closeModal={() => setModalOpen(false)}
+        modalContent={modalContent}
+      />
     </div>
   );
 };

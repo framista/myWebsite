@@ -1,0 +1,23 @@
+.modal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 2rem;
+}
+.modal__icon {
+  width: 2.4rem;
+  margin-left: 10px;
+}
+.modal__title {
+  font-size: 1.6rem;
+}
+.modal__title--success {
+  color: #20cc65;
+}
+.modal__title--error {
+  color: #df2323;
+}
+.modal__body {
+  padding: 1.5rem 0;
+  line-height: 1.4;
+}

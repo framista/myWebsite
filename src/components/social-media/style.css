@@ -28,4 +28,7 @@
   .social-media {
     flex-basis: 100%;
   }
+  .social-media__link {
+    margin: 1rem;
+  }
 }
