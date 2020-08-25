@@ -11,13 +11,23 @@ const Form = () => {
     setErrorName(validateName(name));
     setName(name);
   };
+
+  const encode = (data) => {
+    return Object.keys(data)
+      .map(
+        (key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key])
+      )
+      .join('&');
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    const data = { name };
     if (!errorName) {
       fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: JSON.stringify({ 'form-name': 'contact' }),
+        body: encode({ 'form-name': 'contact', ...data }),
       })
         .then((response) => {
           console.log(response);
@@ -30,7 +40,7 @@ const Form = () => {
 
   return (
     <div className="form">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} method="post">
         <h3 className="form__title">Let's stay in touch</h3>
         <div className="form__group">
           <label className="form__label">Your name</label>
