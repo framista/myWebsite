@@ -1,14 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './style.css';
+import { validateName } from '../../utils/validate';
 
 const Form = () => {
+  const [name, setName] = useState('');
+  const [errorName, setErrorName] = useState('');
+  const changeName = (e) => {
+    const name = e.target.value;
+    console.log(validateName(name));
+    setErrorName(validateName(name));
+    setName(name);
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!errorName) {
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: JSON.stringify({ 'form-name': 'contact' }),
+      })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  };
+
   return (
     <div className="form">
-      <form>
+      <form onSubmit={handleSubmit}>
         <h3 className="form__title">Let's stay in touch</h3>
         <div className="form__group">
           <label className="form__label">Your name</label>
-          <input className="form__input" type="text" name="name" />
+          <input
+            className="form__input"
+            type="text"
+            name="name"
+            value={name}
+            onChange={changeName}
+          />
         </div>
         <div className="form__group">
           <label className="form__label">Your email</label>

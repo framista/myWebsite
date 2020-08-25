@@ -30,11 +30,14 @@
 .form__button {
   background: #e9aa35;
   color: #fff;
-  padding: 1em 1.5em;
+  padding: 1em;
+  width: 200px;
   text-transform: uppercase;
   border: none;
   outline: none;
   border-radius: 20px;
+  margin: 1.5rem auto 0;
+  display: block;
 }
 
 @media (min-width: 900px) {
