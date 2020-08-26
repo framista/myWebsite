@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './style.css';
 import PropTypes from 'prop-types';
+import Drawer from '../drawer';
+import NavbarContext from '../../context/navbar/context';
 
 const Navbar = ({ refs }) => {
+  const navbarContext = useContext(NavbarContext);
+  const { navbarOpen, toogleNavbar } = navbarContext;
   const goToSection = (section) => {
     window.scrollTo({
       top: refs[section].current.offsetTop,
@@ -10,8 +14,19 @@ const Navbar = ({ refs }) => {
     });
   };
 
+  const goToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
-    <div>
+    <header className="nav__header">
+      <div onClick={goToTop} className="nav__link--home">
+        Home
+      </div>
+      <div className="nav__spacer"></div>
       <nav>
         <ul className="nav__list">
           <li
@@ -40,7 +55,13 @@ const Navbar = ({ refs }) => {
           </li>
         </ul>
       </nav>
-    </div>
+      <button className="nav__button" onClick={toogleNavbar}>
+        <span className="nav__span--toogle"></span>
+        <span className="nav__span--toogle"></span>
+        <span className="nav__span--toogle"></span>
+      </button>
+      {navbarOpen && <Drawer goToSection={goToSection} />}
+    </header>
   );
 };
 

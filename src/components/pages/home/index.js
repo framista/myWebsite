@@ -1,4 +1,5 @@
-import React, { Fragment, useRef } from 'react';
+import React, { useRef } from 'react';
+import NavbarState from '../../../context/navbar/NavbarState';
 import Introduction from '../introduction';
 import Navbar from '../../navbar';
 import Skill from '../skill';
@@ -12,7 +13,7 @@ const Home = () => {
   const educationsSection = useRef(null);
   const contactSection = useRef(null);
   return (
-    <Fragment>
+    <NavbarState>
       <Navbar
         refs={{
           skillsSection,
@@ -26,7 +27,7 @@ const Home = () => {
       <Projects ref={projectsSection} />
       <Educations ref={educationsSection} />
       <Contact ref={contactSection} />
-    </Fragment>
+    </NavbarState>
   );
 };
 
