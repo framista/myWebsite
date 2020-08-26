@@ -6,6 +6,7 @@ import Skill from '../skill';
 import Projects from '../projects';
 import Educations from '../educations';
 import Contact from '../contact';
+import Footer from '../../footer';
 
 const Home = () => {
   const skillsSection = useRef(null);
@@ -27,6 +28,7 @@ const Home = () => {
       <Projects ref={projectsSection} />
       <Educations ref={educationsSection} />
       <Contact ref={contactSection} />
+      <Footer />
     </NavbarState>
   );
 };

@@ -38,7 +38,7 @@ const Form = () => {
 
   const unsuccessfullySend = {
     title: 'Failed to send message',
-    body: `Hi ${data.name}! There is problem with sending the message. You can try again later or contact me by email`,
+    body: `Hi ${data.name}! There is problem with sending the message. You can try again later or contact me by email - jablonska.adrianna@wp.pl`,
     isSucceeded: false,
   };
 
