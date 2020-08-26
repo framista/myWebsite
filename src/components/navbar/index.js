@@ -21,6 +21,11 @@ const Navbar = ({ refs }) => {
     });
   };
 
+  let hamburgerButtonClasses = 'nav__button';
+  if (navbarOpen) {
+    hamburgerButtonClasses += ' nav__button--open';
+  }
+
   return (
     <header className="nav__header">
       <div onClick={goToTop} className="nav__link--home">
@@ -55,10 +60,8 @@ const Navbar = ({ refs }) => {
           </li>
         </ul>
       </nav>
-      <button className="nav__button" onClick={toogleNavbar}>
-        <span className="nav__span--toogle"></span>
-        <span className="nav__span--toogle"></span>
-        <span className="nav__span--toogle"></span>
+      <button className={hamburgerButtonClasses} onClick={toogleNavbar}>
+        <div className="nav__span--toogle"></div>
       </button>
       {navbarOpen && <Drawer goToSection={goToSection} />}
     </header>

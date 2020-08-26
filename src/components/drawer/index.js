@@ -4,16 +4,17 @@ import NavbarContext from '../../context/navbar/context';
 
 const Drawer = (props) => {
   const { goToSection } = props;
-  const navbarContext = useContext(NavbarContext);
+  const { closeNavbar, navbarOpen } = useContext(NavbarContext);
 
   const handleClickLink = (section) => {
-      goToSection(section);
-      navbarContext.closeNavbar();
+    goToSection(section);
+    closeNavbar();
   };
 
   return (
     <div>
-      <ul className="drawer__list">
+      <div className="navbar__background"></div>
+      <ul className={'drawer__list'}>
         <li
           onClick={() => handleClickLink('skillsSection')}
           className="drawer__list--item"
