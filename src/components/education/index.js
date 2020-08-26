@@ -10,6 +10,7 @@ const Education = ({ education }) => {
       rel="noopener noreferrer"
       title="link-cert"
       className="education__item"
+      target="_blank"
     >
       <h6 className="education__name">{name}</h6>
       <p className="education__date">{date}</p>

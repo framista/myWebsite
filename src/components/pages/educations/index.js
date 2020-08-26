@@ -7,23 +7,24 @@ const Educations = React.forwardRef((props, ref) => {
     {
       name: 'JavaScript Algorithms and Data Structures',
       date: '08.2020',
-      link: '',
+      link:
+        'https://www.freecodecamp.org/certification/fcc69cc997c-b02b-467d-9282-bb3f82d3b102/javascript-algorithms-and-data-structures',
     },
     {
       name: 'IdoSell Shop - IAI webcamp',
       date: '05.2020 - 06.2020',
-      link: '',
+      link: 'https://adajablonska.netlify.app/certificate/webcamp',
     },
     {
       name: 'CodersCrew - CodersCamp',
       date: '10.2019 - 01.2020',
-      link: '',
+      link: 'https://adajablonska.netlify.app/certificate/coderscamp',
     },
     {
       name:
         'Politechnika Wrocławska - Inżynieria Biomedyczna (Informatyka medyczna)',
       date: '10.2015 - 07.2020 (mgr inż.)',
-      link: '',
+      link: 'https://adajablonska.netlify.app/certificate/pwr',
     },
   ];
   return (

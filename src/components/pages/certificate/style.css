@@ -1,0 +1,13 @@
+.certificate__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+.certificate__image {
+  width: 90%;
+}
+.certificate__image img {
+  border: 5px solid #000;
+  max-width: 100%;
+}
