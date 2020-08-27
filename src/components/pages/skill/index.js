@@ -1,7 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './style.css';
+import { useInView } from 'react-intersection-observer';
+import { motion, useAnimation } from 'framer-motion';
 
 const Skill = React.forwardRef((props, ref) => {
+  const controls = useAnimation();
+  const [refView, inView] = useInView({
+    triggerOnce: true,
+    rootMargin: '100px 0px',
+  });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start('visible');
+    }
+  }, [controls, inView]);
+
   const languages = [
     'JavaScript',
     'React.js',
@@ -24,7 +38,23 @@ const Skill = React.forwardRef((props, ref) => {
   ];
   return (
     <div className="skill" ref={ref}>
-      <div className="container">
+      <motion.div
+        className="container"
+        ref={refView}
+        animate={controls}
+        initial="hidden"
+        variants={{
+          visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+              duration: 1,
+              y: { type: 'spring', stiffness: 10 },
+            },
+          },
+          hidden: { opacity: 0, y: '300px' },
+        }}
+      >
         <h3 className="skill__title">Programming</h3>
         <div className="skill__box">
           {languages.map((language, index) => (
@@ -41,7 +71,7 @@ const Skill = React.forwardRef((props, ref) => {
             </p>
           ))}
         </div>
-      </div>
+      </motion.div>
       <div className="triangle skill__triangle"></div>
     </div>
   );

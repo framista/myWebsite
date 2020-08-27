@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './style.css';
 import {
   validateName,
@@ -8,6 +8,9 @@ import {
   isError,
 } from '../../utils/validate';
 import Modal from '../modal';
+import { useInView } from 'react-intersection-observer';
+import { motion, useAnimation } from 'framer-motion';
+import { variantsFromX } from '../../animation/variants';
 
 const Form = () => {
   const [data, setData] = useState({
@@ -29,6 +32,18 @@ const Form = () => {
     isSucceeded: true,
   });
   const [isModalOpen, setModalOpen] = useState(false);
+
+  const controls = useAnimation();
+  const [refView, inView] = useInView({
+    triggerOnce: true,
+    rootMargin: '400px 0px',
+  });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start('visible');
+    }
+  }, [controls, inView]);
 
   const successfullySend = {
     title: 'The message has been sent successfully',
@@ -102,7 +117,13 @@ const Form = () => {
   };
 
   return (
-    <div className="form">
+    <motion.div
+      className="form"
+      ref={refView}
+      animate={controls}
+      initial="hidden"
+      variants={variantsFromX('100px')}
+    >
       <form onSubmit={handleSubmit} method="post" noValidate>
         <h3 className="form__title">Let's stay in touch</h3>
         <div className="form__group">
@@ -162,7 +183,7 @@ const Form = () => {
         closeModal={() => setModalOpen(false)}
         modalContent={modalContent}
       />
-    </div>
+    </motion.div>
   );
 };
 

@@ -1,12 +1,33 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './style.css';
 import { AiFillGithub } from 'react-icons/ai';
 import { SiCodewars } from 'react-icons/si';
 import { FaFreeCodeCamp } from 'react-icons/fa';
+import { useInView } from 'react-intersection-observer';
+import { motion, useAnimation } from 'framer-motion';
+import { variantsFromX } from '../../animation/variants';
 
 const SocialMedia = () => {
+  const controls = useAnimation();
+  const [refView, inView] = useInView({
+    triggerOnce: true,
+    rootMargin: '400px 0px',
+  });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start('visible');
+    }
+  }, [controls, inView]);
+
   return (
-    <div className="social-media">
+    <motion.div
+      className="social-media"
+      ref={refView}
+      animate={controls}
+      initial="hidden"
+      variants={variantsFromX('-100px')}
+    >
       <h3 className="social-media__title">See more of my projects</h3>
       <a
         href="https://github.com/framista"
@@ -35,7 +56,7 @@ const SocialMedia = () => {
         <FaFreeCodeCamp />
         <p>freeCodeCamp</p>
       </a>
-    </div>
+    </motion.div>
   );
 };
 

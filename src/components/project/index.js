@@ -1,12 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './style.css';
+import { useInView } from 'react-intersection-observer';
+import { motion, useAnimation } from 'framer-motion';
+import { variantsFromX } from '../../animation/variants';
 
 const Project = ({ project }) => {
+  const controls = useAnimation();
+  const [refView, inView] = useInView({
+    triggerOnce: true,
+    rootMargin: '400px 0px',
+  });
+  useEffect(() => {
+    if (inView) {
+      controls.start('visible');
+    }
+  }, [controls, inView]);
   const { title, description, image, technologies, live, github } = project;
   return (
     <div className="project">
-      <div className="project__info">
+      <motion.div
+        className="project__info"
+        ref={refView}
+        animate={controls}
+        initial="hidden"
+        variants={variantsFromX('-100px')}
+      >
         <h3 className="project__title">{title}</h3>
         <p className="project__description">{description}</p>
         <div className="project__technologies">
@@ -36,10 +55,16 @@ const Project = ({ project }) => {
             github
           </a>
         </div>
-      </div>
-      <div className="project__image">
+      </motion.div>
+      <motion.div
+        className="project__image"
+        ref={refView}
+        animate={controls}
+        initial="hidden"
+        variants={variantsFromX('100px')}
+      >
         <img src={image} alt="project img" />
-      </div>
+      </motion.div>
     </div>
   );
 };
