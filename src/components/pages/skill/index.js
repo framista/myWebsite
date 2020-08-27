@@ -24,21 +24,23 @@ const Skill = React.forwardRef((props, ref) => {
   ];
   return (
     <div className="skill" ref={ref}>
-      <h3 className="skill__title">Programming</h3>
-      <div className="skill__box">
-        {languages.map((language, index) => (
-          <p key={index} className="skill__item">
-            {language}
-          </p>
-        ))}
-      </div>
-      <h3 className="skill__title">Tools & others</h3>
-      <div className="skill__box">
-        {tools.map((tool, index) => (
-          <p key={index} className="skill__item">
-            {tool}
-          </p>
-        ))}
+      <div className="container">
+        <h3 className="skill__title">Programming</h3>
+        <div className="skill__box">
+          {languages.map((language, index) => (
+            <p key={index} className="skill__item">
+              {language}
+            </p>
+          ))}
+        </div>
+        <h3 className="skill__title">Tools & others</h3>
+        <div className="skill__box">
+          {tools.map((tool, index) => (
+            <p key={index} className="skill__item">
+              {tool}
+            </p>
+          ))}
+        </div>
       </div>
       <div className="triangle skill__triangle"></div>
     </div>

@@ -29,11 +29,13 @@ const Educations = React.forwardRef((props, ref) => {
   ];
   return (
     <div ref={ref} className="educations">
-      <h3 className="educations__title">education & certificates</h3>
-      <div className="educations__box">
-        {educations.map((education, index) => (
-          <Education key={index} education={education} />
-        ))}
+      <div className="container">
+        <h3 className="educations__title">education & certificates</h3>
+        <div className="educations__box">
+          {educations.map((education, index) => (
+            <Education key={index} education={education} />
+          ))}
+        </div>
       </div>
       <div className="triangle educations__triangle"></div>
     </div>

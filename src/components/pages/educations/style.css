@@ -1,8 +1,6 @@
 .educations {
   min-height: calc(100vh + 15vh);
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
   padding: 2rem;
   background: #15191e;
