@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './style.css';
 import { useInView } from 'react-intersection-observer';
 import { motion, useAnimation } from 'framer-motion';
-import { variantsFromX } from '../../animation/variants';
+import { variantsFromX, variantsLinkHover } from '../../animation/variants';
 
 const Project = ({ project }) => {
   const controls = useAnimation();
@@ -36,24 +36,28 @@ const Project = ({ project }) => {
           ))}
         </div>
         <div className="project__links">
-          <a
+          <motion.a
             className="project__links--item"
             target="_blank"
             href={live}
             title={`live ${title}`}
             rel="noopener noreferrer"
+            whileHover={variantsLinkHover.whileHover}
+            transition={variantsLinkHover.transition}
           >
             live
-          </a>
-          <a
+          </motion.a>
+          <motion.a
             className="project__links--item"
             target="_blank"
             href={github}
             title={`github ${title}`}
             rel="noopener noreferrer"
+            whileHover={variantsLinkHover.whileHover}
+            transition={variantsLinkHover.transition}
           >
             github
-          </a>
+          </motion.a>
         </div>
       </motion.div>
       <motion.div

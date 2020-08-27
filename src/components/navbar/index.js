@@ -3,6 +3,8 @@ import './style.css';
 import PropTypes from 'prop-types';
 import Drawer from '../drawer';
 import NavbarContext from '../../context/navbar/context';
+import { motion } from 'framer-motion';
+import { variantsNavbarHover } from '../../animation/variants';
 
 const Navbar = ({ refs }) => {
   const navbarContext = useContext(NavbarContext);
@@ -34,30 +36,38 @@ const Navbar = ({ refs }) => {
       <div className="nav__spacer"></div>
       <nav>
         <ul className="nav__list">
-          <li
+          <motion.li
             onClick={() => goToSection('skillsSection')}
             className="nav__list--item"
+            whileHover={variantsNavbarHover.whileHover}
+            transition={variantsNavbarHover.transition}
           >
             skills
-          </li>
-          <li
+          </motion.li>
+          <motion.li
             onClick={() => goToSection('projectsSection')}
             className="nav__list--item"
+            whileHover={variantsNavbarHover.whileHover}
+            transition={variantsNavbarHover.transition}
           >
             projects
-          </li>
-          <li
+          </motion.li>
+          <motion.li
             onClick={() => goToSection('educationsSection')}
             className="nav__list--item"
+            whileHover={variantsNavbarHover.whileHover}
+            transition={variantsNavbarHover.transition}
           >
             education
-          </li>
-          <li
+          </motion.li>
+          <motion.li
             onClick={() => goToSection('contactSection')}
             className="nav__list--item"
+            whileHover={variantsNavbarHover.whileHover}
+            transition={variantsNavbarHover.transition}
           >
             contact
-          </li>
+          </motion.li>
         </ul>
       </nav>
       <button className={hamburgerButtonClasses} onClick={toogleNavbar}>

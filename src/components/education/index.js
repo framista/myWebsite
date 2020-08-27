@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import './style.css';
 import { useInView } from 'react-intersection-observer';
 import { motion, useAnimation } from 'framer-motion';
+import { variantsLinkHover } from '../../animation/variants';
 
 const Education = ({ education, index }) => {
   const { name, date, link } = education;
@@ -39,6 +40,7 @@ const Education = ({ education, index }) => {
         },
         hidden: { opacity: 0, y: '200px' },
       }}
+      whileHover={variantsLinkHover.whileHover}
     >
       <h6 className="education__name">{name}</h6>
       <p className="education__date">{date}</p>

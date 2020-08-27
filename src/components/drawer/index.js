@@ -3,6 +3,7 @@ import './style.css';
 import NavbarContext from '../../context/navbar/context';
 import { useInView } from 'react-intersection-observer';
 import { motion, useAnimation } from 'framer-motion';
+import { variantsFromX, variantsDrawerHover } from '../../animation/variants';
 
 const Drawer = (props) => {
   const { goToSection } = props;
@@ -32,42 +33,40 @@ const Drawer = (props) => {
         ref={refView}
         animate={controls}
         initial="hidden"
-        variants={{
-          visible: {
-            opacity: 1,
-            x: 0,
-            transition: {
-              duration: 1,
-              x: { type: 'spring', stiffness: 30 },
-            },
-          },
-          hidden: { opacity: 0, x: '-10vw' },
-        }}
+        variants={variantsFromX('-10vw')}
       >
-        <li
+        <motion.li
           onClick={() => handleClickLink('skillsSection')}
           className="drawer__list--item"
+          whileHover={variantsDrawerHover.whileHover}
+          transition={variantsDrawerHover.transition}
         >
           skills
-        </li>
-        <li
+        </motion.li>
+        <motion.li
           onClick={() => handleClickLink('projectsSection')}
           className="drawer__list--item"
+          whileHover={variantsDrawerHover.whileHover}
+          transition={variantsDrawerHover.transition}
         >
           projects
-        </li>
-        <li
+        </motion.li>
+        <motion.li
           onClick={() => handleClickLink('educationsSection')}
           className="drawer__list--item"
+          whileHover={variantsDrawerHover.whileHover}
+          transition={variantsDrawerHover.transition}
         >
           education
-        </li>
-        <li
+        </motion.li>
+        <motion.li
           onClick={() => handleClickLink('contactSection')}
           className="drawer__list--item"
+          whileHover={variantsDrawerHover.whileHover}
+          transition={variantsDrawerHover.transition}
         >
           contact
-        </li>
+        </motion.li>
       </motion.ul>
     </div>
   );

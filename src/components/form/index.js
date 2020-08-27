@@ -10,7 +10,7 @@ import {
 import Modal from '../modal';
 import { useInView } from 'react-intersection-observer';
 import { motion, useAnimation } from 'framer-motion';
-import { variantsFromX } from '../../animation/variants';
+import { variantsFromX, variantsLinkHover } from '../../animation/variants';
 
 const Form = () => {
   const [data, setData] = useState({
@@ -174,9 +174,14 @@ const Form = () => {
             <p className="form__error">{errorData.message}</p>
           )}
         </div>
-        <button className="form__button" type="submit">
+        <motion.button
+          className="form__button"
+          type="submit"
+          whileHover={variantsLinkHover.whileHover}
+          transition={variantsLinkHover.transition}
+        >
           Send
-        </button>
+        </motion.button>
       </form>
       <Modal
         isModalOpen={isModalOpen}

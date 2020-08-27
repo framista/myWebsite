@@ -5,7 +5,7 @@ import { SiCodewars } from 'react-icons/si';
 import { FaFreeCodeCamp } from 'react-icons/fa';
 import { useInView } from 'react-intersection-observer';
 import { motion, useAnimation } from 'framer-motion';
-import { variantsFromX } from '../../animation/variants';
+import { variantsFromX, variantsLinkHover } from '../../animation/variants';
 
 const SocialMedia = () => {
   const controls = useAnimation();
@@ -29,33 +29,39 @@ const SocialMedia = () => {
       variants={variantsFromX('-100px')}
     >
       <h3 className="social-media__title">See more of my projects</h3>
-      <a
+      <motion.a
         href="https://github.com/framista"
         className="social-media__link"
         target="_blank"
         rel="noopener noreferrer"
+        whileHover={variantsLinkHover.whileHover}
+        transition={variantsLinkHover.transition}
       >
         <AiFillGithub />
         <p>GitHub</p>
-      </a>
-      <a
+      </motion.a>
+      <motion.a
         href="https://www.codewars.com/users/Ada_Jab/stats"
         className="social-media__link"
         target="_blank"
         rel="noopener noreferrer"
+        whileHover={variantsLinkHover.whileHover}
+        transition={variantsLinkHover.transition}
       >
         <SiCodewars />
         <p>Codewars</p>
-      </a>
-      <a
+      </motion.a>
+      <motion.a
         href="https://www.freecodecamp.org/fcc69cc997c-b02b-467d-9282-bb3f82d3b102"
         className="social-media__link"
         target="_blank"
         rel="noopener noreferrer"
+        whileHover={variantsLinkHover.whileHover}
+        transition={variantsLinkHover.transition}
       >
         <FaFreeCodeCamp />
         <p>freeCodeCamp</p>
-      </a>
+      </motion.a>
     </motion.div>
   );
 };
