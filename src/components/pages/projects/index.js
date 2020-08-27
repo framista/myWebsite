@@ -25,9 +25,25 @@ const Projects = React.forwardRef((props, ref) => {
       description:
         'Website for patients to make an appointment, check or cancel visit and fill survey. Data are stored using MongoDB Atlas. Deploy using Heroku.',
       image: '/images/clinic.jpg',
-      technologies: ['React', 'Node', 'Express', 'MongoDB', 'Material-UI'],
+      technologies: [
+        'React',
+        'Node',
+        'Express',
+        'MongoDB',
+        'Material-UI',
+        'Heroku',
+      ],
       live: 'https://framista-clinic.herokuapp.com/',
       github: 'https://github.com/framista/clinic',
+    },
+    {
+      title: 'gym',
+      description:
+        'Website for gym with special hover effects and form with data validation before sending. Deploy on Netlify.',
+      image: '/images/gym.jpg',
+      technologies: ['JavaScript', 'SASS', 'CSS3', 'HTML5', 'Netlify'],
+      live: 'https://ecstatic-lalande-bf5273.netlify.app/',
+      github: 'https://github.com/framista/gym',
     },
   ];
   return (
