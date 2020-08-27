@@ -1,10 +1,23 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './style.css';
 import NavbarContext from '../../context/navbar/context';
+import { useInView } from 'react-intersection-observer';
+import { motion, useAnimation } from 'framer-motion';
 
 const Drawer = (props) => {
   const { goToSection } = props;
   const { closeNavbar } = useContext(NavbarContext);
+
+  const controls = useAnimation();
+  const [refView, inView] = useInView({
+    triggerOnce: true,
+    rootMargin: '400px 0px',
+  });
+  useEffect(() => {
+    if (inView) {
+      controls.start('visible');
+    }
+  }, [controls, inView]);
 
   const handleClickLink = (section) => {
     goToSection(section);
@@ -14,7 +27,23 @@ const Drawer = (props) => {
   return (
     <div>
       <div className="navbar__background" onClick={closeNavbar}></div>
-      <ul className={'drawer__list'}>
+      <motion.ul
+        className={'drawer__list'}
+        ref={refView}
+        animate={controls}
+        initial="hidden"
+        variants={{
+          visible: {
+            opacity: 1,
+            x: 0,
+            transition: {
+              duration: 1,
+              x: { type: 'spring', stiffness: 30 },
+            },
+          },
+          hidden: { opacity: 0, x: '-10vw' },
+        }}
+      >
         <li
           onClick={() => handleClickLink('skillsSection')}
           className="drawer__list--item"
@@ -39,7 +68,7 @@ const Drawer = (props) => {
         >
           contact
         </li>
-      </ul>
+      </motion.ul>
     </div>
   );
 };
