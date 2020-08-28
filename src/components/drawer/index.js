@@ -33,7 +33,7 @@ const Drawer = (props) => {
         ref={refView}
         animate={controls}
         initial="hidden"
-        variants={variantsFromX('-10vw')}
+        variants={variantsFromX('-10vw', 0)}
       >
         <motion.li
           onClick={() => handleClickLink('skillsSection')}

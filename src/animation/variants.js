@@ -1,9 +1,9 @@
-export const variantsFromX = (xStart) => ({
+export const variantsFromX = (xStart, delay = 2.5) => ({
   visible: {
     opacity: 1,
     x: 0,
     transition: {
-      delay: 1.5,
+      delay: delay,
       duration: 2,
       x: { type: 'spring', stiffness: 30 },
     },

@@ -30,9 +30,14 @@ const Navbar = ({ refs }) => {
 
   return (
     <header className="nav__header">
-      <div onClick={goToTop} className="nav__link--home">
+      <motion.div
+        onClick={goToTop}
+        className="nav__link--home"
+        whileHover={variantsNavbarHover.whileHover}
+        transition={variantsNavbarHover.transition}
+      >
         Home
-      </div>
+      </motion.div>
       <div className="nav__spacer"></div>
       <nav>
         <ul className="nav__list">
