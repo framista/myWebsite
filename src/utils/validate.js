@@ -1,4 +1,5 @@
 export const validateName = (name) => {
+  name = name.trim();
   if (name.length < 3) {
     return 'Too short name';
   } else if (name.length > 40) {
@@ -17,6 +18,7 @@ export const validateEmail = (email) => {
 };
 
 export const validateSubject = (subject) => {
+  subject = subject.trim();
   if (subject.length < 5) {
     return 'Enter longer subject';
   } else if (subject.length > 80) {
@@ -26,6 +28,7 @@ export const validateSubject = (subject) => {
 };
 
 export const validateMessage = (message) => {
+  message = message.trim();
   if (message.length < 10) {
     return 'Please write more in your message';
   } else if (message.length > 1000) {
