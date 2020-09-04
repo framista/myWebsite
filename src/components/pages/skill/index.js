@@ -19,6 +19,7 @@ const Skill = React.forwardRef((props, ref) => {
   const languages = [
     'JavaScript',
     'React.js',
+    'Redux',
     'CSS3',
     'SASS',
     'Bootstrap',

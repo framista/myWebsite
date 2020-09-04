@@ -21,6 +21,15 @@ const Projects = React.forwardRef((props, ref) => {
       github: 'https://github.com/framista/journey',
     },
     {
+      title: 'exams',
+      description:
+        'Website to store your information about exams. You can create new exam, edit or delete selected exam. It is possible to sort all the exams by date or by subject and filter exams - failed, passed, without result, unwritten exam. Page with statistics - grade point average for all subjects. Data are stored using local storage. Manage state using Redux. Toogle light/dark mode.',
+      image: '/images/exams.jpg',
+      technologies: ['React', 'Redux', 'JavaScript', 'React Bootstrap'],
+      live: 'https://framista.github.io/exams/#/',
+      github: 'https://github.com/framista/exams',
+    },
+    {
       title: 'virtual clinic',
       description:
         'Website for patients to make an appointment, check or cancel visit and fill survey. Data are stored using MongoDB Atlas. Deploy using Heroku.',
